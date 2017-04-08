@@ -14,6 +14,7 @@ public class Test {
 		iSorular.sekizinciSoruCalistir(4, 2, 6880, 20);
 		iSorular.dokuzuncuSoruCalistir();
 		iSorular.onuncuSoruCalistir();
+		
 	}
 
 }
