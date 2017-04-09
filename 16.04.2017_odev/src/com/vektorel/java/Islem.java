@@ -3,7 +3,7 @@ package com.vektorel.java;
 public class Islem {
 
 	public static void main(String[] args) {
-		ISorular iSorular = new OssMatemayikSorulari();
+		ISorular iSorular = new OssMatematikSorulari();
 		iSorular.onbirinciSoruCalistir();
 		iSorular.onikinciSoruCalistir();
 		iSorular.onucuncuSoruCalistir();

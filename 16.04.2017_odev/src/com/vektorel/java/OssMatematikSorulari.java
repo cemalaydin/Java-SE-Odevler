@@ -1,6 +1,6 @@
 package com.vektorel.java;
 
-public class OssMatemayikSorulari implements ISorular {
+public class OssMatematikSorulari implements ISorular {
 
 	@Override
 	public void onbirinciSoruCalistir() {
