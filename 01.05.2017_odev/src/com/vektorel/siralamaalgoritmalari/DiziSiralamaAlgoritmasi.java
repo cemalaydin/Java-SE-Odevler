@@ -1,6 +1,6 @@
 package com.vektorel.siralamaalgoritmalari;
 
-public class DiziSýralamaAlgoritmasý {
+public class DiziSiralamaAlgoritmasi {
 
 	public static void main(String[] args) {
 
