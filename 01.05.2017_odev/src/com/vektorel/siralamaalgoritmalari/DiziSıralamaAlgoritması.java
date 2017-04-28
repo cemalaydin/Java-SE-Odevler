@@ -18,7 +18,7 @@ public class DiziSýralamaAlgoritmasý {
 
 	}
 
-	// Kendim yazmaya çalýþtigim metot internette insertionSort algorithme
+	// Kendim yazmaya çaliþtigim metot internette insertionSort algorithme
 	// benziyor.
 	static int[] kendiYazdigimMetot(int[] dizi) {
 		int a = 0;
