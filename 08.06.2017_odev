@@ -1,0 +1,48 @@
+create database TEST_DB;
+
+create table BANKA_HESAP 
+(HESAP_NO int not null, 
+HESAP_BAKIYE int, 
+PRIMARY KEY (HESAP_NO)) ;
+
+insert into BANKA_HESAP  (HESAP_NO , HESAP_BAKIYE) values (123456, 500);
+insert into BANKA_HESAP  (HESAP_NO , HESAP_BAKIYE) values (987654, 100);
+insert into BANKA_HESAP  (HESAP_NO , HESAP_BAKIYE) values (135791, 5000);
+insert into BANKA_HESAP  (HESAP_NO , HESAP_BAKIYE) values (246810, 2500);
+
+
+USE `test_db`;
+DROP procedure IF EXISTS `HESAP_PARA_CEK`;
+
+DELIMITER $$
+USE `test_db`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `HESAP_PARA_CEK`(IN PAR_HESAP_NO int, IN CEKILEN_TUTAR int)
+BEGIN
+DECLARE MEVCUT_TUTAR int;
+/* Parametredeki hesap noya ait bakiyeyi 
+değişkene atama*/
+SELECT BANKA_HESAP.HESAP_BAKIYE 
+INTO MEVCUT_TUTAR 
+FROM BANKA_HESAP 
+WHERE BANKA_HESAP.HESAP_NO = PAR_HESAP_NO;
+
+/* yeni tutarı değişkene atama*/
+SET MEVCUT_TUTAR = MEVCUT_TUTAR - CEKILEN_TUTAR;
+
+/* yeni tutarı tabloda güncelleme*/
+UPDATE BANKA_HESAP 
+SET BANKA_HESAP.HESAP_BAKIYE = MEVCUT_TUTAR
+WHERE BANKA_HESAP.HESAP_NO = PAR_HESAP_NO;
+END$$
+
+DELIMITER ;
+
+
+
+
+
+set @PAR_HESAP_NO = 123456;
+set @CEKILEN_TUTAR = 100;
+call HESAP_PARA_CEK(@PAR_HESAP_NO, @CEKILEN_TUTAR);
+
+select * from BANKA_HESAP h where h.HESAP_NO=123456;
